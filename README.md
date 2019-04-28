@@ -1,4 +1,4 @@
-<h4> wmbusmeters integration with different home automation solutions</h4>
+<h3> wmbusmeters integration with different home automation solutions</h3>
 
 [How to integrate with Domoticz](DOMOTICZ.md)
 
