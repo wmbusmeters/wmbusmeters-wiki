@@ -1,4 +1,5 @@
-# Integrate wmbusmeters with HASS <https://www.home-assistant.io/>
+# Integrate wmbusmeters with HASS 
+<https://www.home-assistant.io/>
 
 Add MQTT send command to config file /etc/wmbusmeters.conf
 ```
