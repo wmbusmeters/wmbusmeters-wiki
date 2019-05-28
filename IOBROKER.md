@@ -1,5 +1,5 @@
 # Integrate wmbusmeters with ioBroker
-<http://www.iobroker.net//>
+<http://www.iobroker.net/>
 
 This is not confirmed, but it might work. 
 
