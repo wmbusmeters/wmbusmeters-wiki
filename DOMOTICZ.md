@@ -1,9 +1,6 @@
 # Integrate wmbusmeters with DOMOTICZ
 <http://www.domoticz.com/>
 
-```diff
-- Steps below involves modification of sqlite DB - remeber to make backups before modifications!
-```
 Create dummy hardware and device
 1. Go to Setup -> Hardware
   - Name: anything, e.g. "wmbusmeter_sensors" (this name is only used internally)
@@ -27,6 +24,19 @@ Setup MQTT
   - Port: 1883
   - Everything else should be ok, so click on the Add button at the bottom.
 
+Option 1 - preffered
+
+In your meter configuration located in /etc/wmbusmeters.d/ add MQTT configuration, where XYZ is Idx of your virtual sensor
+```
+shell=/usr/bin/mosquitto_pub -h localhost -t domoticz/in -m "{\"idx\":XYZ,\"svalue\":\"$METER_TOTAL_M3\"}"
+```
+When data is sent by wmbusmeters check in domoticz WUI under Utility tab if created sensor is updated with new value
+
+Option 2 - more hackinsh
+
+```diff
+- Steps below involves modification of sqlite DB - remeber to make backups before modifications!
+```
 Change sensor ID in domoticz 
 1. Stop domoticz and make backups!!!!
 2. Find location of your domoticz installation and open db - sqlite3 domoticz.db
