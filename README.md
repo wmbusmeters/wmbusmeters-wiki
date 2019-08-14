@@ -6,3 +6,5 @@
 
 [How to integrate with ioBroker](IOBROKER.md)
 
+[How to integrate with openHAB](OPENHAB.md)
+
