@@ -8,3 +8,4 @@
 
 [How to integrate with openHAB](OPENHAB.md)
 
+[How to integrate with Prometheus](PROMETHEUS.md)
