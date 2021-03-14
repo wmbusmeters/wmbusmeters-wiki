@@ -9,3 +9,7 @@
 [How to integrate with openHAB](OPENHAB.md)
 
 [How to integrate with Prometheus](PROMETHEUS.md)
+
+<h3> other generic manuals</h3>
+
+[How to install and use wmbusmeters snap](SNAP.md)
