@@ -13,3 +13,5 @@
 <h3> other generic manuals</h3>
 
 [How to install and use wmbusmeters snap](SNAP.md)
+
+[How to use read Izar/Sappel/Diehl R4 meters](IZAR.md)
