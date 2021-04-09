@@ -16,4 +16,4 @@
 
 [How to use read Izar/Sappel/Diehl R4 meters](IZAR.md)
 
-[How to use receive wmbus over long distances](ANTENNA.md)
+[How to receive wmbus over long distances](ANTENNA.md)

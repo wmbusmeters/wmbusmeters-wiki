@@ -1,14 +1,13 @@
 Best setup for receiving wmbus over long distances
 ==================================================
 
-After some personal and very rudimentary testing, I have found
-that the setup that can receive from the longest distance is by
-using an rtlsdr.com dongle (can be purchased here: rtl-sdr.com) and a tuned
-dipole antenna (can be purchased here:
+After some personal and very rudimentary testing, I have found that
+the best setup for my location is by using an rtlsdr.com dongle (can
+be purchased here: rtl-sdr.com) and a tuned dipole antenna (can be
+purchased here:
 http://qlrs.pl/antena-lrs-868mhz-dipol-elastyczna-23mm) and using the
-latest version of rtl_wmbus (which can decode S1,T1 and C1 at the same time.)
-
-![Dipole antenna](img/dipoleantenna.jpg?raw=true)
+latest version of rtl_wmbus (which can decode S1,T1 and C1 at the same
+time.)
 
 With this setup I can finally place the antenna inside my house (a
 wooden house, thin walls) and receive measurements from the multical21
@@ -26,3 +25,5 @@ I am interested in the reception capabilities of a hardware chip like
 im871a and a tuned dipole antenna (instead of the tiny antenna inside
 the dongle) and I have such a setup available and will update this
 page when I have made some more testing.
+
+![Dipole antenna](img/dipoleantenna.jpg?raw=true)
