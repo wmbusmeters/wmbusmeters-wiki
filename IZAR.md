@@ -29,4 +29,4 @@ wmbusmeters --format=json auto:t1 MyWater izar 12345678 NOKEY
 
 or use 12345678 in your config files.
 
-![Water meter](/img/izarwatermeter.jpg?raw=true)
+![Water meter](img/izarwatermeter.jpg?raw=true)
