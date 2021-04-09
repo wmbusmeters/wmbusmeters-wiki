@@ -24,7 +24,7 @@ wants to identify your meter.
 You can now run:
 
 ```
-wmbusmeters --fornat=json auto:t1 MyWater izar 12345678 NOKEY
+wmbusmeters --format=json auto:t1 MyWater izar 12345678 NOKEY
 ```
 
 or use 12345678 in your config files.
