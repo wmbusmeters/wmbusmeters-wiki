@@ -3,6 +3,7 @@ Simple 1/4 wave dipole antenna, made from a short length of co-axial cable.
 ![Homemade Dipole antenna](img/dipoleconnected.png?raw=true)
 
 TV Arial or satellite dish cable is suitable and the impedance 75ohm is probably correct for most SDR dongles.
+
 Start with a length of say 15cm, make one end to the connector required by your SDR radio. (F type in my case).
 
 Trim back the insulation, to just short of the connector 
