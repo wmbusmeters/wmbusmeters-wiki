@@ -1,5 +1,5 @@
-Simple 1/4 wave antenna, made from a short length of co-axial cable.
-====================================================================
+Simple 1/4 wave dipole antenna, made from a short length of co-axial cable.
+===========================================================================
 ![Homemade Dipole antenna](img/dipoleconnected.png?raw=true)
 
 TV Arial or satellite dish cable is suitable and the impedance 75ohm is probably correct for most SDR dongles.
