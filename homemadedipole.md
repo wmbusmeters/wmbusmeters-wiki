@@ -15,7 +15,7 @@ If there is another foil layer underneath remove this.
 
 Twist the braid together so it forms a stiff wire, bend thru 90deg.
 
-Bend the inner conductor & its insualtor also thru 90deg in the other direction.
+Bend the inner conductor & its insulator also thru 90deg in the other direction.
 
 Now trim the length of each wire to 82mm.
 
