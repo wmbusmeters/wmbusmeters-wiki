@@ -17,3 +17,5 @@
 [How to use read Izar/Sappel/Diehl R4 meters](IZAR.md)
 
 [How to receive wmbus over long distances](ANTENNA.md)
+
+[How to make a diplole antenna](homemadedipole.md)
