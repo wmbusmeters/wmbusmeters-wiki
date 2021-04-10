@@ -18,4 +18,4 @@
 
 [How to receive wmbus over long distances](ANTENNA.md)
 
-[How to make a diplole antenna](homemadedipole.md)
+[How to make a 1/4 wave dipole antenna](homemadedipole.md)
