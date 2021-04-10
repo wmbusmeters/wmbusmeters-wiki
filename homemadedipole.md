@@ -18,7 +18,7 @@ Twist the braid together so it forms a stiff wire, bend thru 90deg.
 
 Bend the inner conductor & its insulator also thru 90deg in the other direction.
 
-Now trim the length of each wire to 82mm.
+Now trim the length of each wire to 82mm, for 868MHz
 
 ![Homemade Dipole diagram](img/dipolediagram.png?raw=true)
 
