@@ -12,4 +12,5 @@ Twist the braid together so it forms a stiff wire, bend thru 90deg.
 Bend the inner conductor & its insualtor also thru 90deg in the other direction.
 Now trim the length of each wire to 82mm.
 ![Homemade Dipole diagram](img/dipolediagram.png?raw=true)
+
 There are a few websites with calculators  for 1/4 wave antennas if other frquencies are required.
