@@ -19,10 +19,10 @@ In stable channel latest releases of wmbusmeters will be available, but in edge 
 Using the wmbusmeters Snap
 ===============================
 
-After installing the Snap, the privileged access to USB interfaces need to be configured:
+After installing the Snap, the privileged access to USB interfaces and system process listing needs to be configured:
 
     sudo snap connect wmbusmeters:raw-usb core:raw-usb
-	sudo snap connect wmbusmeters:system-observe core:system-observe
+    sudo snap connect wmbusmeters:system-observe core:system-observe
 
 Using wmbusmeters Daemon
 -------------------------------------------
