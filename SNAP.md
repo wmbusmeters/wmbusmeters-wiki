@@ -3,6 +3,9 @@ Installation of snapd
 
 Please refer to official documentation for snapd installation - https://snapcraft.io/docs/installing-snapd
 
+:bangbang: | Remeber to follow documentation and install core snap - needed for interfaces to work
+:---: | :---
+
 Installation of wmbusmeters Snap
 ===============================
 
@@ -48,3 +51,6 @@ When changes are made to configuration, service must be restarted.
 
 Those directories are persistent across updates - files will not be deleted or changed when updating snap. 
 Files and directories are being deleted only when snap is removed.
+
+:information_source: | On arm arch following error might show up - `ERROR: ld.so: object '/usr/lib/arm-linux-gnueabihf/libarmmem-${PLATFORM}.so' from /etc/ld.so.preload cannot be preloaded (cannot open shared object file): ignored.` It is just a warning and can be disabled by commenting out `/usr/lib/arm-linux-gnueabihf/libarmmem-${PLATFORM}.so` from `/etc/ld.so.preload`
+:---: | :---
