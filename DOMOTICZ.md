@@ -39,7 +39,7 @@ Option 2 - more hackinsh
 ```
 Change sensor ID in domoticz 
 1. Stop domoticz and make backups!!!!
-2. Find location of your domoticz installation and open db - sqlite3 domoticz.db
+2. Find location of your domoticz installation and open db - `sqlite3 domoticz.db`
 3. Select from db your sensor just to verify that it is correct one (ID is idx from gui) - 
 ```
 SELECT * FROM DeviceStatus WHERE ID = 2;
