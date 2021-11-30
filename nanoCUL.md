@@ -17,7 +17,7 @@ A board.h file is provided, in case you're interested in looking at the options 
 
 ### Flashing
 
-I have flashed my nanoCUL on a Linux system (be it a PC or a Raspberry Pi, the installation is similar) running Ubuntu-like firmware. First thing you need to do is to install the avrdude software that can be used for flashing. It's also available for Windows command line but I have not tried it.
+I have flashed my nanoCUL on a Linux system (be it a PC or a Raspberry Pi, the installation is similar) running Ubuntu-like operating system. First thing you need to do is to install the avrdude software that can be used for flashing. It's also available for Windows command line but I have not tried it.
 
 ```sudo apt install avrdude```
 
@@ -70,10 +70,6 @@ avrdude: safemode: Fuses OK (E:00, H:00, L:00)
 
 avrdude done.  Thank you.
 ```
-
-Couple of points here:
-* For some reason the flashing was giving me verification errors often. I retried until I did not get errors. The stick seemed to work even with those errors though.
-* Many guides tell you to use baud rate of 57600 bps but I got *stk500_recv(): programmer is not responding* errors unless I changed to 115200.
 
 ## Initial verification
 
@@ -237,3 +233,70 @@ Now you can proceed configuring wmbusmeters normally and set up your meters.
 ## nanoCUL vendors
 
 I bought my nanoCUL from a company called [smart-home-komponente.de](https://www.smart-home-komponente.de/nano-cul/nano-cul-868/). I've also provided them with the firmware I created for myself, so perhaps they can flash it for you on purchase. I get no incentive in mentioning them here.
+
+## Troubleshooting
+
+### TTY Buffer Too Small
+
+If you do get an error such as:
+
+```
+(cul) bad hex "6644496A106403551437C5337251345015496A00073B005005CE0607C429BAC37E8E51209BAEA0F3B6DEC8F47487DB9697D3760960AFA2E53813F0ED9B555AEBC7CD9EEAF9AE50AA5555C8F256F701D35F21D72DAAFE161E83E91B994AA5AE2C74210775B3E44BF5E8FC49091"
+(cul) warning: the hex string is not proper! Ignoring telegram!
+(cul) error in received message.
+```
+
+This likely means that the wMBus telegram was larger than what can be fit into the TTY buffer of the nanoCUL. The firmware linked here has a buffer size of 300 bytes that's about the maximum I could fit in the small RAM. It should be possible to receive a wMBus telegram of 148 bytes with this firmware.
+
+If you want to grow the buffer size and compile your new firmware modify this line in board.h before compiling:
+
+```
+#define TTY_BUFSIZE             300
+```
+
+### avrdude Fails Verification of Flash
+
+For some reason avrdude was giving me verification errors such as the one below often when flashing. I simply retried until I did not get errors. The stick seemed to work even with those errors though.
+
+```
+$ avrdude -D -p atmega328p -P /dev/ttyUSB0 -b 115200 -c arduino -U flash:w:nanoCUL_r568_mbus_c1t1_bufsize300.hex
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: Device signature = 0x1e950f (probably m328p)
+avrdude: reading input file "nanoCUL.hex"
+avrdude: input file nanoCUL.hex auto detected as Intel Hex
+avrdude: writing flash (14760 bytes):
+
+Writing | ################################################## | 100% 5.56s
+
+avrdude: 14760 bytes of flash written
+avrdude: verifying flash memory against nanoCUL.hex:
+avrdude: load data flash data from input file nanoCUL.hex:
+avrdude: input file nanoCUL.hex auto detected as Intel Hex
+avrdude: input file nanoCUL.hex contains 14760 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 4.98s
+
+avrdude: verifying ...
+avrdude: verification error, first mismatch at byte 0x1b86
+         0xeb != 0xef
+avrdude: verification error; content mismatch
+
+avrdude: safemode: Fuses OK (E:00, H:00, L:00)
+
+avrdude done.  Thank you.
+```
+
+### stk500_recv(): programmer is not responding Error When Flashing
+
+Many guides tell you to use baud rate of 57600 bps but I got *stk500_recv(): programmer is not responding* errors unless I changed the baud rate to 115200 on the avrdude command.
+
+```
+$ avrdude -D -p atmega328p -P /dev/ttyUSB0 -b 57600 -c arduino -U flash:w:nanoCUL_r568_mbus_c1t1_bufsize300.hex
+avrdude: stk500_recv(): programmer is not responding
+avrdude: stk500_getsync() attempt 1 of 10: not in sync: resp=0x00
+```
