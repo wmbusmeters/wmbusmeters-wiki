@@ -1,10 +1,9 @@
 Installation of snapd
 ===============================
 
-Please refer to official documentation for snapd installation - https://snapcraft.io/docs/installing-snapd
+Please refer to official documentation for snapd installation - [https://snapcraft.io/docs/installing-snapd](https://snapcraft.io/docs/installing-snapd) and for snap usage - [https://snapcraft.io/docs/getting-started](https://snapcraft.io/docs/getting-started)
 
-:bangbang: | Remeber to follow documentation and install core snap - needed for interfaces to work
-:---: | :---
+<img src="img/exclamation.png" width="30"> **Remeber to follow documentation and install core snap - needed for interfaces to work**
 
 Installation of wmbusmeters Snap
 ===============================
@@ -27,16 +26,15 @@ After installing the Snap, the privileged access to USB interfaces and system pr
     sudo snap connect wmbusmeters:raw-usb core:raw-usb
     sudo snap connect wmbusmeters:system-observe core:system-observe
 
-Using wmbusmeters Daemon
+Using snap wmbusmeters service
 -------------------------------------------
 
-For all actions with wmbusmeters daemon, like enable/disable/start/stop/restart/status
-systemctl commands should be used
+For all wmbusmeters service actions snap command should be used
 
 For example:
 
-    systemctl start snap.wmbusmeters.wmbusmeters.service
-    systemctl status snap.wmbusmeters.wmbusmeters.service
+    sudo snap services wmbusmeters
+    sudo snap restart wmbusmeters
 
 Configuration for wmbusmeters
 -----------------------------
@@ -52,5 +50,4 @@ When changes are made to configuration, service must be restarted.
 Those directories are persistent across updates - files will not be deleted or changed when updating snap. 
 Files and directories are being deleted only when snap is removed.
 
-:information_source: | On arm arch following error might show up - `ERROR: ld.so: object '/usr/lib/arm-linux-gnueabihf/libarmmem-${PLATFORM}.so' from /etc/ld.so.preload cannot be preloaded (cannot open shared object file): ignored.` It is just a warning and can be disabled by commenting out `/usr/lib/arm-linux-gnueabihf/libarmmem-${PLATFORM}.so` from `/etc/ld.so.preload`
-:---: | :---
+<img src="img/exclamation.png" width="30"> **On arm arch following error might show up - `ERROR: ld.so: object '/usr/lib/arm-linux-gnueabihf/libarmmem-${PLATFORM}.so' from /etc/ld.so.preload cannot be preloaded (cannot open shared object file): ignored.` It is just a warning and can be disabled by commenting out `/usr/lib/arm-linux-gnueabihf/libarmmem-${PLATFORM}.so` from `/etc/ld.so.preload`**
