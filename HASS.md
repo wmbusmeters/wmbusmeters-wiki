@@ -10,9 +10,12 @@ Add sensor configuration to Home Assistant configuration file (as example for wa
 Change the topic to match the meter id.
 
 ```
-  - platform: mqtt
-    name: "meter_name"
-    state_topic: "wmbusmeters/12345678"
-    value_template: '{{ value_json["total_m3"] }}'
-    unit_of_measurement: "m3"
+mqtt:
+  sensor:
+    - name: "meter_name"
+      state_topic: "wmbusmeters/12345678"
+      unit_of_measurement: "m³"
+      device_class: water
+      state_class: total
+      value_template: "{{ value_json.total_m3 }}"
 ```
