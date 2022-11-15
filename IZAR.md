@@ -9,7 +9,7 @@ However the numbers printed on the meter are available in the json.
 If you try:
 
 ```
-wmbusmeters --fornat=json auto:t1 MyWater izar '*' NOKEY
+wmbusmeters --format=json auto:t1 MyWater izar '*' NOKEY
 ```
 
 (or instead of NOKEY, use the key you have for your meter) then you will get telegrams with this information:
