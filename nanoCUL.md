@@ -4,6 +4,8 @@ nanoCUL is a USB wMBus interface based on Arduino Nano (or a clone) and CC1101 m
 
 This guide will help you to flash your nanoCUL device with a firmware that works nicely with wmbusmeters.
 
+There is also [every-culfw](https://github.com/DecksLabs/every-culfw/tree/main/docs) that uses Arduino Every and has much bigger buffer size (1500 bytes) so you shouldn't hit the buffer size limit that easily. Everything except for firmware and flashing from this guide is common for nanoCUL and everyCUL.
+
 ## Firmware
 
 The Arduino Nano is an ATmega328P based device that requires a firmware. If you buy a commercially available nanoCUL device chances are that it has either a firmware that does not support wMBus, does not support C1 mode or has a too small TTY buffer for longer wMBus frames. So you might have to flash the firmware for your nanoCUL even if you bought a ready device.
