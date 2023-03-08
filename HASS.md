@@ -3,7 +3,7 @@
 
 ## Home Assistant Operating System
 
-When using Home Assistant Operating System it gives the opportunity to use wmbusmeters as an add-on. Please refer to [this documentation](https://github.com/weetmuts/wmbusmeters/blob/master/ha-addon/DOCS.md) for wmbusmeters add-on configuration and usage.
+When using Home Assistant Operating System it gives the opportunity to use wmbusmeters as an add-on. Please refer to [this documentation](https://github.com/wmbusmeters/wmbusmeters-ha-addon/blob/main/wmbusmeters-ha-addon-edge/DOCS.md) for wmbusmeters add-on configuration and usage.
 
 ## Home Assistant Container
 
