@@ -13,7 +13,7 @@ The Arduino Nano is an ATmega328P based device that requires a firmware. If you 
 There are two firmwares available for a nanoCUL: the original [culfw](http://culfw.de/culfw.html) and a modified version of it called [a-culfw](https://github.com/heliflieger/a-culfw). You can build the firmware yourself from the source code but that's outside the scope of this guide. The firmware provided on this page is created based on the last available release of culfw (r568) since that offers support for wMBus C1 mode too. The wMBus mode consumes quite a lot of memory and the ATmega328P does not have a lot so any extra radio modes supported by the culfw were disabled. Some wMBus telegrams are quite lengthy, so the standard receive buffer size (TTY_BUFSIZE parameter in board.h) was increased to 300 bytes. This enables you to receive 148 byte long wMBus telegrams. 
 
 Firmware can be downloaded here:
-[nanoCUL_r568_mbus_c1t1_bufsize300.zip](https://github.com/weetmuts/wmbusmeterswiki/files/7623213/nanoCUL_r568_mbus_c1t1_bufsize300.zip)
+[nanoCUL_r568_mbus_c1t1_bufsize300.zip](https://github.com/wmbusmeters/wmbusmeters-wiki/files/7623213/nanoCUL_r568_mbus_c1t1_bufsize300.zip)
 
 A board.h file is provided, in case you're interested in looking at the options used or want to modify the firmware. If you want to do that, download the culfw [firmware tarball](https://sourceforge.net/code-snapshots/svn/c/cu/culfw/code/culfw-code-r568-trunk.zip) and replace the board.h in culfw/Devices/nanoCUL folder and run make in that folder.
 
