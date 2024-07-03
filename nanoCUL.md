@@ -2,7 +2,7 @@
 
 nanoCUL is a USB wMBus interface based on Arduino Nano (or a clone) and CC1101 module. You can build one yourself with a little bit of tinkering skills or buy a finished unit from one of the vendors. You'll probably want a 868 MHz version for wMBus. It supports both C1 and T1 modes with the correct firmware. The device you have likely requires a firmware upgrade, unless your vendor flashed it with software that you requested. This guide will help you to flash your nanoCUL device with a firmware that works nicely with wmbusmeters.
 
-| ⚠️  |
+| ⚠️  Warning! |
 | The nanoCUL can never handle wmbus telegrams longer 148 bytes! |
 
 If you know that your telegrams are shorter than this, then you can
