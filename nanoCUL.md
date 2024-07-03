@@ -1,16 +1,17 @@
 # Use nanoCUL device for wMBus reception with wmbusmeters
 
-nanoCUL is a USB wMBus interface based on Arduino Nano (or a clone) and CC1101 module. You can build one yourself with a little bit of tinkering skills or buy a finished unit from one of the vendors. You'll probably want a 868 MHz version for wMBus. It supports both C1 and T1 modes with the correct firmware. The device you have likely requires a firmware upgrade, unless your vendor flashed it with software that you requested.
+nanoCUL is a USB wMBus interface based on Arduino Nano (or a clone) and CC1101 module. You can build one yourself with a little bit of tinkering skills or buy a finished unit from one of the vendors. You'll probably want a 868 MHz version for wMBus. It supports both C1 and T1 modes with the correct firmware. The device you have likely requires a firmware upgrade, unless your vendor flashed it with software that you requested. This guide will help you to flash your nanoCUL device with a firmware that works nicely with wmbusmeters.
 
-This guide will help you to flash your nanoCUL device with a firmware that works nicely with wmbusmeters.
+[!WARNING]
+The nanoCUL can never handle wmbus telegrams longer 148 bytes! If you know that your telegrams are shorter than this, then you can use the nanoCUL with the improved firmware. Without the improved firmware the max size of the telegrams are even shorter 110 bytes. The maximum length of a wmbus telegram is 255 bytes, so the nanoCUL misses a lot.
 
-There is also [every-culfw](https://github.com/DecksLabs/every-culfw/tree/main/docs) that uses Arduino Every and has much bigger buffer size (1500 bytes) so you shouldn't hit the buffer size limit that easily. Everything except for firmware and flashing from this guide is common for nanoCUL and everyCUL.
+The CUL [every-culfw](https://github.com/DecksLabs/every-culfw/tree/main/docs) that uses Arduino Every and has much bigger buffer size (1500 bytes) so you shouldn't hit the buffer size limit.
 
 ## Firmware
 
 The Arduino Nano is an ATmega328P based device that requires a firmware. If you buy a commercially available nanoCUL device chances are that it has either a firmware that does not support wMBus, does not support C1 mode or has a too small TTY buffer for longer wMBus frames. So you might have to flash the firmware for your nanoCUL even if you bought a ready device.
 
-There are two firmwares available for a nanoCUL: the original [culfw](http://culfw.de/culfw.html) and a modified version of it called [a-culfw](https://github.com/heliflieger/a-culfw). You can build the firmware yourself from the source code but that's outside the scope of this guide. The firmware provided on this page is created based on the last available release of culfw (r568) since that offers support for wMBus C1 mode too. The wMBus mode consumes quite a lot of memory and the ATmega328P does not have a lot so any extra radio modes supported by the culfw were disabled. Some wMBus telegrams are quite lengthy, so the standard receive buffer size (TTY_BUFSIZE parameter in board.h) was increased to 300 bytes. This enables you to receive 148 byte long wMBus telegrams. 
+There are two firmwares available for a nanoCUL: the original [culfw](http://culfw.de/culfw.html) and a modified version of it called [a-culfw](https://github.com/heliflieger/a-culfw). You can build the firmware yourself from the source code but that's outside the scope of this guide. The firmware provided on this page is created based on the last available release of culfw (r568) since that offers support for wMBus C1 mode too. The wMBus mode consumes quite a lot of memory and the ATmega328P does not have a lot so any extra radio modes supported by the culfw were disabled. Some wMBus telegrams are quite lengthy, so the standard receive buffer size (TTY_BUFSIZE parameter in board.h) was increased to 300 bytes. This enables you to receive 148 byte long wMBus telegrams.
 
 Firmware can be downloaded here:
 [nanoCUL_r568_mbus_c1t1_bufsize300.zip](https://github.com/wmbusmeters/wmbusmeters-wiki/files/7623213/nanoCUL_r568_mbus_c1t1_bufsize300.zip)
