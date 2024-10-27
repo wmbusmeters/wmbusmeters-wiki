@@ -1,13 +1,13 @@
 Best setup for receiving wmbus over long distances
 ==================================================
 
-After some personal and very rudimentary testing, the top three best receivers
+After some personal, subjective and very rudimentary testing, the top three best receivers
 of radio signals are:
 
 The new iu891a dongle with the ANT-868-CW-HWR-SMA from TE Connetivity / Linux Technologies.
 (this is the recommended antenna if you buy from the iu891a from https://shop.imst.de)
 
-The Metis-II with the ANT-868-CW-HWR-SMA also performs well with the ANT-868-CW-HWR-SMA antenna.
+The Metis-II with the ANT-868-CW-HWR-SMA performs almost as well as the iu891a.
 
 A metal shielded original rtlsdr.com dongle (can be purchased here: rtl-sdr.com) and
 the ANT-868-CW-HWR-SMA antenna from TE Connectivity / Linx Technologies.
