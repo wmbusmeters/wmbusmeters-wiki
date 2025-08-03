@@ -17,12 +17,13 @@ The CUL [every-culfw](https://github.com/DecksLabs/every-culfw/tree/main/docs) t
 
 The Arduino Nano is an ATmega328P based device that requires a firmware. If you buy a commercially available nanoCUL device chances are that it has either a firmware that does not support wMBus, does not support C1 mode or has a too small TTY buffer for longer wMBus frames. So you might have to flash the firmware for your nanoCUL even if you bought a ready device.
 
-There are two firmwares available for a nanoCUL: the original [culfw](http://culfw.de/culfw.html) and a modified version of it called [a-culfw](https://github.com/heliflieger/a-culfw). You can build the firmware yourself from the source code but that's outside the scope of this guide. The firmware provided on this page is created based on the last available release of culfw (r568) since that offers support for wMBus C1 mode too. The wMBus mode consumes quite a lot of memory and the ATmega328P does not have a lot so any extra radio modes supported by the culfw were disabled. Some wMBus telegrams are quite lengthy, so the standard receive buffer size (TTY_BUFSIZE parameter in board.h) was increased to 300 bytes. This enables you to receive 148 byte long wMBus telegrams.
+There are two firmwares available for a nanoCUL: the original [culfw](http://culfw.de/culfw.html) and a modified version of it called [a-culfw](https://github.com/heliflieger/a-culfw). You can build the firmware yourself from the source code but that's outside the scope of this guide. The firmware provided on this page is created based on the last available release of culfw (r571) since that offers support for wMBus C1 mode too. The wMBus mode consumes quite a lot of memory and the ATmega328P does not have a lot so any extra radio modes supported by the culfw were disabled. Some wMBus telegrams are quite lengthy, so the standard receive buffer size (TTY_BUFSIZE parameter in board.h) was increased to 300 bytes. This enables you to receive 148 byte long wMBus telegrams.
 
-Firmware can be downloaded here:
-[nanoCUL_r568_mbus_c1t1_bufsize300.zip](https://github.com/wmbusmeters/wmbusmeters-wiki/files/7623213/nanoCUL_r568_mbus_c1t1_bufsize300.zip)
+The original wMBus firmware provided here ([nanoCUL_r568_mbus_c1t1_bufsize300.zip](https://github.com/wmbusmeters/wmbusmeters-wiki/files/7623213/nanoCUL_r568_mbus_c1t1_bufsize300.zip)) crashes randomly on some clone nanoCULs (having ATmega328P/ATmega328PB CPU, but not the original Arduino Nano) while receiving some large telegrams. This is apparently caused by issues in linked avr-libc before version 2.1.0. Cross-compiling/linking against recent versions fixes the issue.
 
-A board.h file is provided, in case you're interested in looking at the options used or want to modify the firmware. If you want to do that, download the culfw [firmware tarball](https://sourceforge.net/code-snapshots/svn/c/cu/culfw/code/culfw-code-r568-trunk.zip) and replace the board.h in culfw/Devices/nanoCUL folder and run make in that folder.
+The updated firmware can be downloaded here: [nanoCUL868_r571_mbus_c1t1_bufsize300_libc210.hex](https://github.com/oktett-8/culfw/releases/tag/r571wmbus)
+
+In case you're interested in looking at the options used or want to modify the firmware the board.h.wmbus file is provided in the [O8-r571wmbus](https://github.com/oktett-8/culfw/tree/O8-r571wmbus) branch. If you want to do that replace the board.h in culfw/Devices/nanoCUL folder and run make in that folder (but make sure you got updated versions of avr-cross-compiler and avr-libc before).
 
 ### Flashing
 
@@ -50,7 +51,7 @@ crw-rw---- 1 root dialout 188, 0 Nov 29 20:53 /dev/ttyUSB0
 Now it's time to flash the firmware. Place the hex file into your Linux machine and run avrdude using your device name and the filename of the firmware like this:
 
 ```
-$ avrdude -D -p atmega328p -P /dev/ttyUSB0 -b 115200 -c arduino -U flash:w:nanoCUL_r568_mbus_c1t1_bufsize300.hex
+$ avrdude -D -p atmega328p -P /dev/ttyUSB0 -b 115200 -c arduino -U flash:w:nanoCUL868_r571_mbus_c1t1_bufsize300_libc210.hex
 
 avrdude: AVR device initialized and ready to accept instructions
 
@@ -142,7 +143,7 @@ wmbusmeters --debug --logtelegrams --verbose /dev/ttyUSB0:cul:c1
 (serial /dev/ttyUSB0) sent "560A0D"
 (serial) EVENT thread interrupted
 (serial) received binary "5620312E3637206E616E6F43554C3836385F723536380D0A"
-(cul) probe response "V 1.67 nanoCUL868_r568<0D><0A>"
+(cul) probe response "V 1.67 nanoCUL868_r571<0D><0A>"
 (serialtty) closed /dev/ttyUSB0 (detect cul)
 (cul) are you there? yes
 (serial) EVENT thread interrupted
@@ -215,10 +216,10 @@ Received telegram from: 55036410
 
 Press Ctrl-C to stop the execution. There are a few important points you can learn from this printout.
 
-wmbusmeters was able to connect to the nanoCUL and the firmware r568 is running on it:
+wmbusmeters was able to connect to the nanoCUL and the firmware r571 is running on it:
 
 ```
-(cul) probe response "V 1.67 nanoCUL868_r568<0D><0A>"
+(cul) probe response "V 1.67 nanoCUL868_r571<0D><0A>"
 (serialtty) closed /dev/ttyUSB0 (detect cul)
 (cul) are you there? yes
 ```
@@ -268,7 +269,7 @@ If you want to grow the buffer size and compile your new firmware modify this li
 For some reason avrdude was giving me verification errors such as the one below often when flashing. I simply retried until I did not get errors. The stick seemed to work even with those errors though.
 
 ```
-$ avrdude -D -p atmega328p -P /dev/ttyUSB0 -b 115200 -c arduino -U flash:w:nanoCUL_r568_mbus_c1t1_bufsize300.hex
+$ avrdude -D -p atmega328p -P /dev/ttyUSB0 -b 115200 -c arduino -U flash:w:nanoCUL868_r571_mbus_c1t1_bufsize300_libc210.hex
 
 avrdude: AVR device initialized and ready to accept instructions
 
@@ -305,7 +306,7 @@ avrdude done.  Thank you.
 Many guides tell you to use baud rate of 57600 bps but I got *stk500_recv(): programmer is not responding* errors unless I changed the baud rate to 115200 on the avrdude command.
 
 ```
-$ avrdude -D -p atmega328p -P /dev/ttyUSB0 -b 57600 -c arduino -U flash:w:nanoCUL_r568_mbus_c1t1_bufsize300.hex
+$ avrdude -D -p atmega328p -P /dev/ttyUSB0 -b 57600 -c arduino -U flash:w:nanoCUL868_r571_mbus_c1t1_bufsize300_libc210.hex
 avrdude: stk500_recv(): programmer is not responding
 avrdude: stk500_getsync() attempt 1 of 10: not in sync: resp=0x00
 ```
